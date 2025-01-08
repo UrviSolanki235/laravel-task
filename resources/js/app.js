@@ -1,4 +1,8 @@
 import { createApp } from "vue";
-import App from './components/App.vue'
+import PageTree from './components/PageTree.vue';
 
-createApp(App).mount('#app')
+const app = createApp({
+    components: { PageTree }
+  });
+
+app.mount('#app');
