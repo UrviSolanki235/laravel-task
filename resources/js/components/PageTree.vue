@@ -10,16 +10,33 @@
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
   props: {
-    pages: Array,
+    pages: {
+      type: Array,
+      default: () => []
+    }
   },
   data() {
     return {
       visiblePages: [],
+      pages: [] // Initialize empty array
     };
   },
+  created() {
+    this.fetchPages();
+  },
   methods: {
+    async fetchPages() {
+      try {
+        const response = await axios.get('/pages');
+        this.pages = response.data;
+      } catch (error) {
+        console.error('Error fetching pages:', error);
+      }
+    },
     toggle(page) {
       const index = this.visiblePages.indexOf(page.id);
       if (index === -1) {

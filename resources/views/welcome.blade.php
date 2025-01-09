@@ -10,7 +10,6 @@
 
 <body>
     <div id="app">
-        <page-tree :pages="{{ $pages }}"></page-tree>
     </div>
 </body>
 
